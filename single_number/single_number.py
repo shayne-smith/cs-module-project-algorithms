@@ -2,7 +2,8 @@
 Input: a List of integers where every int except one shows up twice
 Returns: an integer
 '''
-def single_number(arr):
+# O(n^2)
+def single_number_slow(arr):
     newArr = []
 
     # loop through input array
@@ -16,6 +17,21 @@ def single_number(arr):
     for elem in newArr:
         if elem not in arr:
             return elem
+
+#O(n)
+def single_number(arr):
+    # space complexity: O((1/2) * n)
+    # time complexity: O(1)
+    s = set()
+
+    # space complexity: O(n)
+    for x in arr: #O(n)
+        if x in s:
+            s.remove(x)
+        else:
+            s.add(x)
+    
+    return list(s)[0] 
 
 if __name__ == '__main__':
     # Use the main function to test your implementation
